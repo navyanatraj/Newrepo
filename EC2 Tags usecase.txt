@@ -1,0 +1,54 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:*"
+        },
+        {
+            "Action": [
+                "ec2:RunInstances",
+                "ec2:CreateTags"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
+
+
+
+
+
+
+import json
+import boto3
+ec2 = boto3.client('ec2')
+def lambda_handler(event, context):
+    client = ec2.create_tags(
+    Resources=[
+    'i-0348d2ef773a33c50',
+    ],
+    Tags=[
+    {
+    'Key': 'Name',
+    'Value': 'PracticeLambda'
+    },
+    {
+    'Key': 'Dept',
+    'Value': 'AWSFocusGroup'
+    }
+    ]
+    )
+
+----------------------------------------------------------------
+
+using python IDE
+
+import boto3
+ec2 = boto3.client('ec2' , region_name = 'us-east-1')
